@@ -9,13 +9,15 @@ const CommentList = (props) => {
       key={comment._id}
       id={comment._id}
       timestamp={comment.updatedAt}
+      handleUpdateComment={props.handleUpdateComment}
+      handleDeleteComment={props.handleDeleteComment}
     >
-      { comment.text}
+      {comment.text}
     </Comment>
   ));
   return (
     <div>
-      { commentNodes }
+      {commentNodes}
     </div>
   );
 };
@@ -25,7 +27,10 @@ CommentList.propTypes = {
     author: PropTypes.string,
     id: PropTypes.string,
     text: PropTypes.string,
+    updatedAt: PropTypes.string,
   })),
+  handleDeleteComment: PropTypes.func.isRequired,
+  handleUpdateComment: PropTypes.func.isRequired,
 };
 
 CommentList.defaultProps = {
